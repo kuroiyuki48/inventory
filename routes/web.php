@@ -22,11 +22,11 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::get('/barang', [App\Http\Controllers\BarangController::class, 'index'])->name('barang');
-Route::post('/barang/data', [App\Http\Controllers\BarangController::class, 'data'])->name('barang-data');
-Route::get('/barang/form/{id?}', [App\Http\Controllers\BarangController::class, 'form'])->name('barang-form');
-Route::post('/barang/save/{id?}', [App\Http\Controllers\BarangController::class, 'save'])->name('barang-save');
-Route::get('/barang/delete/{id?}', [App\Http\Controllers\BarangController::class, 'delete'])->name('barang-delete');
+Route::get('/barang_stok', [App\Http\Controllers\BarangController::class, 'index'])->name('barang_stok');
+Route::post('/barang_stok/data', [App\Http\Controllers\BarangController::class, 'data'])->name('barang_stok-data');
+Route::get('/barang_stok/form/{id?}', [App\Http\Controllers\BarangController::class, 'form'])->name('barang_stok-form');
+Route::post('/barang_stok/save/{id?}', [App\Http\Controllers\BarangController::class, 'save'])->name('barang_stok-save');
+Route::get('/barang_stok/delete/{id?}', [App\Http\Controllers\BarangController::class, 'delete'])->name('barang_stok-delete');
 
 
 Route::get('/pelanggan', [App\Http\Controllers\PelangganController::class, 'index'])->name('pelanggan');
