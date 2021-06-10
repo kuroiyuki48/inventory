@@ -5,7 +5,7 @@
     <h3 class="page-title">
         <span class="page-title-icon bg-gradient-primary text-white mr-2">
             <i class="mdi mdi-account"></i>
-        </span> Pelanggan 
+        </span> Barang Masuk  
     </h3>
     <nav aria-label="breadcrumb">
         <ul class="breadcrumb">
