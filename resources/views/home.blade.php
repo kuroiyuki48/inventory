@@ -23,7 +23,7 @@
                 <h4 class="font-weight-normal mb-3">Barang<i class="mdi mdi-archive mdi-24px float-right"></i>
                 </h4>
                 <h2 class="mb-5">{{ App\Models\Barang::count() ?? '0' }} Item</h2>
-                <a href="/barang" class="text-white" style="text-decoration: none"><h6 class="card-text">Lihat</h6></a>
+                <a href="/barang_stok" class="text-white" style="text-decoration: none"><h6 class="card-text">Lihat</h6></a>
             </div>
         </div>
     </div>
