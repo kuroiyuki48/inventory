@@ -15,5 +15,41 @@
         </ul>
     </nav>
 </div>
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Form Barang</h4>
+            <!--begin::Form-->
+            <form class="form" action="{{ route('barang_stok-save', isset($row) ? $row->id : '') }}" method="POST">
+                @csrf
+                <div class="card-body">
+                    <div class="form-group row">
+                        <div class="col-lg-12">
+                            <label>Nama Barang:</label>
+                            <input type="text" value="{{ isset($row) ? $row->nama_barang : '' }}" class="form-control" name="nama_barang" required/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-12">
+                            <label>Harga:</label>
+                            <input type="number" min="1000" value="{{ isset($row) ? $row->harga : '' }}" class="form-control" name="harga" required/>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <a href="{{route('barang_stok')}}" class="btn btn-warning">Back</a>
+                        </div>
+                        <div class="col-lg-6 text-right">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                     </div>
+                </div>
+            </form>
+            <!--end::Form-->
+        </div>
+    </div>
+</div>
 @endsection
 

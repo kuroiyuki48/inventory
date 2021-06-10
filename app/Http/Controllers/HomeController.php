@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Barang;
 use App\Models\BarangMasukDetail;
 use App\Models\BarangKeluarDetail;
-use App\Models\Barang;
+use App\Models\Pelanggan;
+use App\Models\Supplier;
 
 class HomeController extends Controller
 {
