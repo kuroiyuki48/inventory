@@ -50,5 +50,88 @@
         </div>
     </div>
 </div>
+<div class="row">
+    <div class="col-md-4 stretch-card grid-margin">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Barang</h4>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th> Nama Barang </th>
+                                <th> Stok </th>
+                                <th> Harga </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($barang as $item)
+                                <tr>
+                                    <td>{{ $item->nama_barang }}</td>
+                                    <td>{{ $item->stok }}</td>
+                                    <td>Rp {{ number_format($item->harga,2,',','.') }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 stretch-card grid-margin">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Barang Masuk</h4>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th> Nama Barang </th>
+                                <th> Jumlah </th>
+                                <th> Total </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($barang_masuk_detail as $item)
+                                <tr>
+                                    <td>{{ $item->barang->nama_barang }}</td>
+                                    <td>{{ $item->jumlah }}</td>
+                                    <td>Rp {{ number_format($item->total,2,',','.') }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 stretch-card grid-margin">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Barang Keluar</h4>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th> Nama Barang </th>
+                                <th> Jumlah </th>
+                                <th> Total </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($barang_keluar_detail as $item)
+                                <tr>
+                                    <td>{{ $item->barang->nama_barang }}</td>
+                                    <td>{{ $item->jumlah }}</td>
+                                    <td>Rp {{ number_format($item->total,2,',','.') }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
 

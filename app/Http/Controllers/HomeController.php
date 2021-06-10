@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\BarangMasukDetail;
+use App\Models\BarangKeluarDetail;
+use App\Models\Barang;
 
 class HomeController extends Controller
 {
@@ -23,6 +26,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $data['barang_masuk_detail'] = BarangMasukDetail::orderBy('id', 'DESC')->limit(10)->get();
+        $data['barang_keluar_detail'] = BarangKeluarDetail::orderBy('id', 'DESC')->limit(10)->get();
+        $data['barang'] = Barang::orderBy('id', 'DESC')->limit(10)->get();
+        return view('home', $data);
     }
 }
