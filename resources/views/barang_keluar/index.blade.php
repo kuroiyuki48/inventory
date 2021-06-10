@@ -23,21 +23,23 @@
             @elseif (session('success'))
             <div class="alert alert-success"><i class="flaticon-exclamation text-success"></i> {{ session('success') }}</div>
             @endif
-            <table id="table" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Pelanggan</th>
-                        <th>Total Pembayaran</th>
-                        <th>Tanggal</th>
-                        <th>Updated At</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table id="table" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Pelanggan</th>
+                            <th>Total Pembayaran</th>
+                            <th>Tanggal</th>
+                            <th>Updated At</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
