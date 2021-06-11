@@ -73,3 +73,10 @@ Route::get('/barang_keluar_detail/data/{id?}', [App\Http\Controllers\BarangKelua
 Route::get('/barang_keluar_detail/form/{id?}', [App\Http\Controllers\BarangKeluarDetailController::class, 'form'])->name('barang_keluar_detail-form');
 Route::post('/barang_keluar_detail/save/{id?}', [App\Http\Controllers\BarangKeluarDetailController::class, 'save'])->name('barang_keluar_detail-save');
 Route::get('/barang_keluar_detail/delete/{id?}', [App\Http\Controllers\BarangKeluarDetailController::class, 'delete'])->name('barang_keluar_detail-delete');
+
+
+Route::get('/users/{id?}', [App\Http\Controllers\UserAccountController::class, 'index'])->name('users');
+Route::get('/users/data/{id?}', [App\Http\Controllers\UserAccountController::class, 'data'])->name('users-data');
+Route::get('/users/form/{id?}', [App\Http\Controllers\UserAccountController::class, 'form'])->name('users-form');
+Route::post('/users/save/{id?}', [App\Http\Controllers\UserAccountController::class, 'save'])->name('users-save');
+Route::get('/users/delete/{id?}', [App\Http\Controllers\UserAccountController::class, 'delete'])->name('users-delete');
