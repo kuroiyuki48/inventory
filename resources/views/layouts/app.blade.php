@@ -139,6 +139,12 @@
                             </ul>
                         </div>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/users">
+                            <span class="menu-title">Users Account</span>
+                            <i class="mdi mdi-account menu-icon"></i>
+                        </a>
+                    </li>
                 </ul>
             </nav>
             <!-- partial -->
