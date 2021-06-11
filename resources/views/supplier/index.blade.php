@@ -9,9 +9,11 @@
     </h3>
     <nav aria-label="breadcrumb">
         <ul class="breadcrumb">
+            @if (Auth::user()->role == 1)
             <li class="breadcrumb-item active" aria-current="page">
                 <a href="/supplier/form" class="btn btn-success btn-sm"><i class="mdi mdi-plus"></i> Tambah</a>
             </li>
+            @endif
         </ul>
     </nav>
 </div>

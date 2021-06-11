@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DataTables;
 use App\Models\Supplier;
 use App\Models\BarangMasuk;
+use Auth;
 
 class SupplierController extends Controller
 {
@@ -33,9 +34,13 @@ class SupplierController extends Controller
     {
         $data = Supplier::orderBy('id', 'DESC')->get();
         return Datatables::of($data)->addIndexColumn()->addColumn('action', function($data){
-            $button = '<a href="'.route("supplier-form", $data->id).'" style="text-decoration: none"><i class="text-info mdi mdi-pencil icon-sm"></i></a>
-            <a href="'.route("supplier-delete", $data->id).'" style="text-decoration: none" class="delete"><i class="text-danger mdi mdi-delete icon-sm"></i></a>
-            <script src="assets/js/alert.js"></script>';
+            if (Auth::user()->role == 1) {
+                $button = '<a href="'.route("supplier-form", $data->id).'" style="text-decoration: none"><i class="text-info mdi mdi-pencil icon-sm"></i></a>
+                <a href="'.route("supplier-delete", $data->id).'" style="text-decoration: none" class="delete"><i class="text-danger mdi mdi-delete icon-sm"></i></a>
+                <script src="assets/js/alert.js"></script>';
+            } else {
+                $button = '-';
+            }
             return $button;
         })->editColumn('updated_at', function($data)
         {

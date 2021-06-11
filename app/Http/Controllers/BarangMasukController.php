@@ -9,6 +9,7 @@ use App\Models\BarangMasukDetail;
 use App\Models\Barang;
 use App\Models\Supplier;
 use PDF;
+use Auth;
 
 class BarangMasukController extends Controller
 {
@@ -36,10 +37,16 @@ class BarangMasukController extends Controller
     {
         $data = BarangMasuk::orderBy('id', 'DESC')->get();
         return Datatables::of($data)->addIndexColumn()->addColumn('action', function($data){
-            $button = '<a href="'.route("barang_masuk-delete", $data->id).'" style="text-decoration: none" class="delete"><i class="text-danger mdi mdi-delete icon-sm"></i></a>
-            <a href="'.route("barang_masuk_detail", $data->id).'" style="text-decoration: none"><i class="text-primary mdi mdi-format-list-numbered icon-sm"></i></a>
-            <a target="_blank" href="'.route("barang_masuk-print", $data->id).'" style="text-decoration: none" class="print"><i class="text-info mdi mdi-printer icon-sm"></i></a>
-            <script src="assets/js/alert.js"></script>';
+            if (Auth::user()->role == 1) {
+                $button = '<a href="'.route("barang_masuk-delete", $data->id).'" style="text-decoration: none" class="delete"><i class="text-danger mdi mdi-delete icon-sm"></i></a>
+                <a href="'.route("barang_masuk_detail", $data->id).'" style="text-decoration: none"><i class="text-primary mdi mdi-format-list-numbered icon-sm"></i></a>
+                <a target="_blank" href="'.route("barang_masuk-print", $data->id).'" style="text-decoration: none"><i class="text-info mdi mdi-printer icon-sm"></i></a>
+                <script src="assets/js/alert.js"></script>';
+            } else {
+                $button = '<a href="'.route("barang_masuk_detail", $data->id).'" style="text-decoration: none"><i class="text-primary mdi mdi-format-list-numbered icon-sm"></i></a>
+                <a target="_blank" href="'.route("barang_masuk-print", $data->id).'" style="text-decoration: none"><i class="text-info mdi mdi-printer icon-sm"></i></a>
+                <script src="assets/js/alert.js"></script>';
+            }
             return $button;
         })->editColumn('updated_at', function($data)
         {
@@ -131,9 +138,9 @@ class BarangMasukController extends Controller
         $data = BarangMasuk::whereBetween('tanggal', [$request->tanggal_dari, $request->tanggal_sampai])
         ->get();
 
-        return view('barang_masuk.print_date', ['barang_masuk' => $data]);
+        // return view('barang_masuk.print_date', ['barang_masuk' => $data]);
         
-        // $pdf = PDF::loadview('barang_keluar.print_date', ['barang_keluar' => $data]);
-        // return $pdf->stream();
+        $pdf = PDF::loadview('barang_masuk.print_date', ['barang_masuk' => $data]);
+        return $pdf->stream();
     }
 }

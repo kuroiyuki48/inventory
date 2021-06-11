@@ -13,6 +13,8 @@ class Barang extends Model
     protected $fillable = [
         'nama_barang',
         'harga',
-        'stok'
+        'stok',
+        'merk',
+        'jenis'
     ];
 }

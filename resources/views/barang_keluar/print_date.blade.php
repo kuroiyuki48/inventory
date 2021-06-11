@@ -3,11 +3,13 @@
 	<title>Laporan Barang Keluar</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-<body onload="window.print();setTimeout(window.close, 0);">
+<body>
 	<style type="text/css">
 		table tr td,
 		table tr th{
 			font-size: 9pt;
+			width: auto;
+			margin: auto;
 		}
 	</style>
  
@@ -28,10 +30,12 @@
 				<td>{{ $i++ }}</td>
 				<td>{{ $p->pelanggan->nama }}</td>
 				<td>
-					<table class="table">
-						<th>Nama Barang</th>
-						<th>Jumlah</th>
-						<th>Total</th>
+					<table class="table table-bordered">
+						<tr>
+							<th>Nama</th>
+							<th>Jumlah</th>
+							<th>Total</th>
+						</tr>
 						@foreach ($p->barang_keluar_detail as $item)
 						<tr>
 								<td>{{ $item->barang->nama_barang }}</td>

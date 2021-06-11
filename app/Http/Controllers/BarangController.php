@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DataTables;
+use Auth;
 use App\Models\Barang;
 use App\Models\BarangKeluarDetail;
 use App\Models\BarangMasukDetail;
@@ -34,9 +35,13 @@ class BarangController extends Controller
     {
         $data = Barang::orderBy('id', 'DESC')->get();
         return Datatables::of($data)->addIndexColumn()->addColumn('action', function($data){
-            $button = '<a href="'.route("barang_stok-form", $data->id).'" style="text-decoration: none"><i class="text-info mdi mdi-pencil icon-sm"></i></a>
-            <a href="'.route("barang_stok-delete", $data->id).'" style="text-decoration: none" class="delete"><i class="text-danger mdi mdi-delete icon-sm"></i></a>
-            <script src="assets/js/alert.js"></script>';
+            if (Auth::user()->role == 1) {
+                $button = '<a href="'.route("barang_stok-form", $data->id).'" style="text-decoration: none"><i class="text-info mdi mdi-pencil icon-sm"></i></a>
+                <a href="'.route("barang_stok-delete", $data->id).'" style="text-decoration: none" class="delete"><i class="text-danger mdi mdi-delete icon-sm"></i></a>
+                <script src="assets/js/alert.js"></script>';
+            } else {
+                $button = '-';
+            }
             return $button;
         })->editColumn('updated_at', function($data)
         {
@@ -64,20 +69,24 @@ class BarangController extends Controller
 
             $post->nama_barang = $request->nama_barang;
             $post->harga = $request->harga;
+            $post->merk = $request->merk;
+            $post->jenis = $request->jenis;
 
             $post->save();
 
             return redirect()->route('barang_stok')->with(['success' => 'Berhasil diupdate']);
 
         } else {
-            $name = Barang::where('nama_barang', $request->nama_barang)->count();
+            $name = Barang::where('nama_barang', $request->nama_barang)->where('merk', $request->merk)->count();
             if ($name >= 1) {
-                return redirect()->route('barang_stok')->with(['error' => 'Data sudah ada']);
+                return redirect()->route('barang_stok')->with(['error' => 'Barang dengan nama dan merk ini sudah ada']);
             }
 
             $post = Barang::create([
                 'nama_barang' => $request->nama_barang,
                 'harga' => $request->harga,
+                'merk' => $request->merk,
+                'jenis' => $request->jenis,
             ]);
 
             return redirect()->route('barang_stok')->with(['success' => 'Berhasil diupload']);

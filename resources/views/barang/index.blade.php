@@ -9,9 +9,11 @@
     </h3>
     <nav aria-label="breadcrumb">
         <ul class="breadcrumb">
+            @if (Auth::user()->role == 1)
             <li class="breadcrumb-item active" aria-current="page">
                 <a href="/barang_stok/form" class="btn btn-success btn-sm"><i class="mdi mdi-plus"></i> Tambah</a>
             </li>
+            @endif
         </ul>
     </nav>
 </div>
@@ -29,6 +31,8 @@
                         <tr>
                             <th>No</th>
                             <th>Nama Barang</th>
+                            <th>Merk</th>
+                            <th>Jenis</th>
                             <th>Harga</th>
                             <th>Stok</th>
                             <th>Updated At</th>
@@ -54,6 +58,8 @@
             columns: [
             { data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false },
             { data: 'nama_barang', name: 'nama_barang' },
+            { data: 'merk', name: 'merk' },
+            { data: 'jenis', name: 'jenis' },
             { data: 'harga', name: 'harga' },
             { data: 'stok', name: 'stok' },
             { data: 'updated_at', name: 'updated_at' },

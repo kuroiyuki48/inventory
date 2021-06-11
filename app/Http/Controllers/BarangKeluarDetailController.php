@@ -8,6 +8,7 @@ use App\Models\BarangKeluarDetail;
 use App\Models\BarangKeluar;
 use App\Models\Pelanggan;
 use App\Models\Barang;
+use Auth;
 
 class BarangKeluarDetailController extends Controller
 {
@@ -36,8 +37,12 @@ class BarangKeluarDetailController extends Controller
     {
         $data = BarangKeluarDetail::where('id_barang_keluar', $id)->orderBy('id', 'DESC')->get();
         return Datatables::of($data)->addIndexColumn()->addColumn('action', function($data){
-            $button = '<a href="'.route("barang_keluar_detail-delete", $data->id).'" style="text-decoration: none" class="delete"><i class="text-danger mdi mdi-delete icon-sm"></i></a>
-            <script src="assets/js/alert.js"></script>';
+            if (Auth::user()->role == 1) {
+                $button = '<a href="'.route("barang_keluar_detail-delete", $data->id).'" style="text-decoration: none" class="delete"><i class="text-danger mdi mdi-delete icon-sm"></i></a>
+                <script src="assets/js/alert.js"></script>';
+            } else {
+                $button = '-';
+            }
             return $button;
         })->editColumn('updated_at', function($data)
         {

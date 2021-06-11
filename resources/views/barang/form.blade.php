@@ -35,6 +35,18 @@
                             <input type="number" min="1000" value="{{ isset($row) ? $row->harga : '' }}" class="form-control" name="harga" required/>
                         </div>
                     </div>
+                    <div class="form-group row">
+                        <div class="col-lg-12">
+                            <label>Merk:</label>
+                            <input type="text" value="{{ isset($row) ? $row->merk : '' }}" class="form-control" name="merk" required/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-12">
+                            <label>Jenis:</label>
+                            <input type="text" value="{{ isset($row) ? $row->jenis : '' }}" class="form-control" name="jenis" required/>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-footer">
                     <div class="row">

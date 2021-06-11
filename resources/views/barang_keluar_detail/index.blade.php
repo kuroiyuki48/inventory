@@ -12,9 +12,11 @@
             <li class="breadcrumb">
                 <a href="/barang_keluar" class="btn btn-warning btn-sm"><i class="mdi mdi-keyboard-backspace"></i> Back</a>
             </li>
+            @if (Auth::user()->role == 1)
             <li class="breadcrumb">
                 <a href="/barang_keluar_detail/form/{{ $id }}" class="btn btn-success btn-sm"><i class="mdi mdi-plus"></i> Tambah</a>
             </li>
+            @endif
         </ul>
     </nav>
 </div>

@@ -14,17 +14,19 @@
                     @csrf
                     <div class="form-group row">
                         <div class="col-md-4">
-                            <input type="date" name="tanggal_dari" class="form-control form-control-sm">
+                            <input type="date" name="tanggal_dari" class="form-control form-control-sm" required>
                         </div>
                         <div class="col-md-4">
-                            <input type="date" name="tanggal_sampai" class="form-control form-control-sm">
+                            <input type="date" name="tanggal_sampai" class="form-control form-control-sm" required>
                         </div>
                         <div class="col-md-1">
                             <button type="submit" class="btn btn-info btn-sm text-white"><i class="mdi mdi-printer"></i></button>
                         </div>
+                        @if (Auth::user()->role == 1)
                         <div class="col-md-3">
                             <a href="/barang_keluar/form" class="btn btn-success btn-sm"><i class="mdi mdi-plus"></i> Tambah</a>
                         </div>
+                        @endif
                     </div>
                 </form>
             </li>
