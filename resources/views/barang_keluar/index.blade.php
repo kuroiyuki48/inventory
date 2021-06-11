@@ -9,8 +9,24 @@
     </h3>
     <nav aria-label="breadcrumb">
         <ul class="breadcrumb">
-            <li class="breadcrumb-item active" aria-current="page">
-                <a href="/barang_keluar/form" class="btn btn-success btn-sm"><i class="mdi mdi-plus"></i> Tambah</a>
+            <li class="breadcrumb">
+                <form action="{{ route('barang_keluar-print_date') }}" method="POST" target="_blank">
+                    @csrf
+                    <div class="form-group row">
+                        <div class="col-md-4">
+                            <input type="date" name="tanggal_dari" class="form-control form-control-sm">
+                        </div>
+                        <div class="col-md-4">
+                            <input type="date" name="tanggal_sampai" class="form-control form-control-sm">
+                        </div>
+                        <div class="col-md-1">
+                            <button type="submit" class="btn btn-info btn-sm text-white"><i class="mdi mdi-printer"></i></button>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="/barang_keluar/form" class="btn btn-success btn-sm"><i class="mdi mdi-plus"></i> Tambah</a>
+                        </div>
+                    </div>
+                </form>
             </li>
         </ul>
     </nav>

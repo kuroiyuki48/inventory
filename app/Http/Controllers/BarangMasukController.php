@@ -125,4 +125,15 @@ class BarangMasukController extends Controller
         $pdf = PDF::loadview('barang_masuk.print', ['barang_masuk_detail' => $data]);
         return $pdf->stream();
     }
+
+    public function print_date(Request $request)
+    {
+        $data = BarangMasuk::whereBetween('tanggal', [$request->tanggal_dari, $request->tanggal_sampai])
+        ->get();
+
+        return view('barang_masuk.print_date', ['barang_masuk' => $data]);
+        
+        // $pdf = PDF::loadview('barang_keluar.print_date', ['barang_keluar' => $data]);
+        // return $pdf->stream();
+    }
 }

@@ -49,6 +49,7 @@ Route::get('/barang_masuk/form/{id?}', [App\Http\Controllers\BarangMasukControll
 Route::post('/barang_masuk/save/{id?}', [App\Http\Controllers\BarangMasukController::class, 'save'])->name('barang_masuk-save');
 Route::get('/barang_masuk/delete/{id?}', [App\Http\Controllers\BarangMasukController::class, 'delete'])->name('barang_masuk-delete');
 Route::get('/barang_masuk/print/{id?}', [App\Http\Controllers\BarangMasukController::class, 'print'])->name('barang_masuk-print');
+Route::post('/barang_masuk/print/date', [App\Http\Controllers\BarangMasukController::class, 'print_date'])->name('barang_masuk-print_date');
 
 
 Route::get('/barang_masuk_detail/{id?}', [App\Http\Controllers\BarangMasukDetailController::class, 'index'])->name('barang_masuk_detail');
@@ -64,6 +65,7 @@ Route::get('/barang_keluar/form/{id?}', [App\Http\Controllers\BarangKeluarContro
 Route::post('/barang_keluar/save/{id?}', [App\Http\Controllers\BarangKeluarController::class, 'save'])->name('barang_keluar-save');
 Route::get('/barang_keluar/delete/{id?}', [App\Http\Controllers\BarangKeluarController::class, 'delete'])->name('barang_keluar-delete');
 Route::get('/barang_keluar/print/{id?}', [App\Http\Controllers\BarangKeluarController::class, 'print'])->name('barang_keluar-print');
+Route::post('/barang_keluar/print/date', [App\Http\Controllers\BarangKeluarController::class, 'print_date'])->name('barang_keluar-print_date');
 
 
 Route::get('/barang_keluar_detail/{id?}', [App\Http\Controllers\BarangKeluarDetailController::class, 'index'])->name('barang_keluar_detail');
